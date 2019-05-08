@@ -1,2 +1,2 @@
-# Desarrollo-apliaci-n-movil
+# Desarrollo-apliacion-movil
 Tareas, actividades y proyecto
