@@ -28,7 +28,7 @@ export class ModalComponent implements OnInit {
 
   dismissMOdal(){
     this.modalCtrl.dismiss({
-      'dismissed': true
+      'dismissed': true,
     });
   }
 
@@ -38,6 +38,8 @@ export class ModalComponent implements OnInit {
     console.log('Correo: ',this.generarForm.value.Correo);
     console.log('Edad: ', this.generarForm.value.Edad);
     console.log(this.generarForm.value);
+
+    this.modalCtrl.dismiss( this.generarForm.value);
   }
 
 /*

@@ -57,7 +57,14 @@ export class HomePage {
     const modal = await this.modal.create({
         component: ModalComponent
     });
+
+    modal.onDidDismiss().then((data) => { //Para generar  otro arreglo de tipo data
+      console.log(data)
+      console.log(data.data)
+
+      this.myArray.push(data.data);
+    });
+  
     return await modal.present();
   }
-
 }
