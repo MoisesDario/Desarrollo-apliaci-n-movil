@@ -8,17 +8,20 @@
 
 <ion-content>
   <div>
-    <ion-card class="ion-padding" *ngFor="let item of myArray" color={{calculateAgeColor(item.age)}}>
+    <ion-card class="ion-padding" *ngFor="let item of myArray; let posicion = index" color={{calculateAgeColor(item.age)}} (click) = "Menu(posicion)">
       {{item.name}} -
       {{item.email}} -
       {{item.age}}
       <small *ngIf="item.age >=18">Mayor de edad</small>
     </ion-card>
     <!-- fab placed to the top end -->
-  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
-    <ion-fab-button size="small" (click)="presentModal()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+        <ion-fab-button size="small" (click)="presentModal()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    
   </div>
 </ion-content>
+
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController } from '@ionic/angular'
+import {ModalController, NavParams } from '@ionic/angular'
 import { HomePage } from '../home/home.page';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Route } from '@angular/compiler/src/core';
@@ -18,9 +18,9 @@ export class ModalComponent implements OnInit {
 
   constructor(private modalCtrl: ModalController, public formBuilder: FormBuilder) {
     this.generarForm = formBuilder.group({
-      Nombre: ['', Validators.required],
-      Correo: ['', Validators.required],
-      Edad: ['', Validators.required]
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      age: ['', Validators.required]
     });
   }
 
@@ -37,7 +37,7 @@ export class ModalComponent implements OnInit {
     console.log('Nombre: ',this.generarForm.value.Nombre);
     console.log('Correo: ',this.generarForm.value.Correo);
     console.log('Edad: ', this.generarForm.value.Edad);
-    console.log(this.generarForm.value);
+    //console.log(this.generarForm.value);
 
     this.modalCtrl.dismiss( this.generarForm.value);
   }
