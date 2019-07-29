@@ -33,10 +33,10 @@ export class ModalComponent implements OnInit {
   }
 
   pushModalCtrl(){
-    console.log('Datos obtenidos: ');
-    console.log('Nombre: ',this.generarForm.value.Nombre);
-    console.log('Correo: ',this.generarForm.value.Correo);
-    console.log('Edad: ', this.generarForm.value.Edad);
+    console.log("Datos creado: ");
+    console.log("Nombre: ",this.generarForm.value.name);
+    console.log("Correo: ",this.generarForm.value.email);
+    console.log("Edad: ", this.generarForm.value.age);
     //console.log(this.generarForm.value);
 
     this.modalCtrl.dismiss( this.generarForm.value);

@@ -8,3 +8,20 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+
+<ion-content fullscreen>
+     <form [formGroup]="editForm">  
+      <ion-label position="stacked">Nombre: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" value="{{modalName}}"formControlName="name" ></ion-input>
+        <br>
+        <ion-label position="stacked">Correo: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" value="{{modalEmail}}" formControlName="email" ></ion-input>
+        <br>
+        <ion-label position="stacked">Edad: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text"  value="{{modalAge}}" formControlName="age" ></ion-input>
+      
+      <ion-button color="primary" (click)="editModalCtrl(editForm.value)">Editar</ion-button>
+      
+    </form>
+  </ion-content>

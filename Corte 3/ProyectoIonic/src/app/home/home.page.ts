@@ -3,7 +3,6 @@ import { ModalController, ActionSheetController, AlertController } from '@ionic/
 import { ModalComponent } from '../modal/modal.component';
 import { Route } from '@angular/compiler/src/core';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
-import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-home',
@@ -43,11 +42,11 @@ export class HomePage {
     };
 
     this.myArray.push(data);
+    
   }
 
   
   calculateAgeColor(age: number){
-    console.log('Age', age);
     if(age < 18)
       return 'danger';
     else if(age >=18 && age <= 30)
@@ -56,24 +55,43 @@ export class HomePage {
     return 'tertiary'
   }
 
-  async presentModal(){
+  async presentModal(){ //Crear
     const modal = await this.modal.create({
-      component: ModalComponent
+      component: ModalComponent,
     });
 
     modal.onDidDismiss().then((data) => { //Para generar  otro arreglo de tipo data
-      console.log(data)
-      console.log(data.data)
-
-      this.myArray.push(data.data);
+      if (data !== null) {
+        this.myArray.push(data.data);
+  
+      }
+      
     });
+
     return await modal.present();
   }
-
+  
   Menu(posicion: any){
-    console.log(posicion);
+    console.log("Click en el arreglo:" + posicion);
     this.presentActionSheet(posicion);
   
+  }
+
+  async presentEditar(data, posicion){ //Editar
+    console.log("estos son los valores" + data);
+    const modal = await this.modal.create({
+      component: EditModalComponent,
+      componentProps: {
+        "name": data.name,
+        "email": data.email,
+        "age": data.age
+      }
+    });
+
+    modal.onDidDismiss().then((data) => { //Para generar  otro arreglo de tipo data
+      this.myArray[posicion] = data.data;
+    });
+    return await modal.present();
   }
 
   async presentAlert(posicion: number){
@@ -108,6 +126,7 @@ export class HomePage {
         icon: 'trash',
         handler:() =>{
           console.log('Delete clicked');
+          console.log("Se va eliminar en el arreglo: " + posicion);
           this.presentAlert(posicion);
         }
         },{
@@ -116,7 +135,7 @@ export class HomePage {
           icon:'trash',
           handler:() =>{
             console.log('Edit clicked');
-           // this.route.navigate(['/edit', posicion);
+            this.presentEditar(this.myArray[posicion], posicion);
           }
         },{
           text:'Cancel',

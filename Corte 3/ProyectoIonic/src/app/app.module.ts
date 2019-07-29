@@ -13,8 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 @NgModule({
-  declarations: [AppComponent,ModalComponent],
-  entryComponents: [ModalComponent],
+  declarations: [AppComponent,ModalComponent,EditModalComponent],
+  entryComponents: [ModalComponent,EditModalComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,ReactiveFormsModule],
   providers: [
     StatusBar,
